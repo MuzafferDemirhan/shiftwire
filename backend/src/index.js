@@ -8,6 +8,7 @@ import path from "path";
 
 import { clerkMiddleware } from "@clerk/express";
 
+import { app, server } from "./lib/socket.js";
 import { connectDB } from "./lib/db.js";
 import job from "./lib/cron.js";
 
