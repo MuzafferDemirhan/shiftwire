@@ -9,14 +9,14 @@ export default function ChatPanel() {
 
   if (!selectedUserId) {
     return (
-      <div className="flex flex-1 items-center justify-center bg-gray-50">
+      <div className="flex flex-1 items-center justify-center bg-gray-50 dark:bg-gray-800">
         <EmptyState />
       </div>
     );
   }
 
   return (
-    <div className="flex flex-1 flex-col bg-gray-50">
+    <div className="flex flex-1 flex-col bg-gray-50 dark:bg-gray-800">
       <ChatHeader />
       <MessageList />
       <MessageInput />

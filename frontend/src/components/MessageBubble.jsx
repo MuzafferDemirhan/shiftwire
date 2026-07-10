@@ -10,7 +10,7 @@ export default function MessageBubble({ message }) {
         className={`max-w-[75%] rounded-2xl px-4 py-2 ${
           isOwn
             ? "rounded-br-sm bg-blue-600 text-white"
-            : "rounded-bl-sm bg-gray-200 text-gray-900"
+            : "rounded-bl-sm bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white"
         }`}
       >
         {message.text && <p className="text-sm">{message.text}</p>}

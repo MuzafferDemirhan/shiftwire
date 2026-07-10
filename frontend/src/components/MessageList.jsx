@@ -21,7 +21,7 @@ export default function MessageList() {
   return (
     <div className="flex-1 space-y-3 overflow-y-auto px-6 py-4">
       {messages.length === 0 ? (
-        <p className="pt-8 text-center text-sm text-gray-400">
+        <p className="pt-8 text-center text-sm text-gray-400 dark:text-gray-500">
           No messages yet. Say hello!
         </p>
       ) : (

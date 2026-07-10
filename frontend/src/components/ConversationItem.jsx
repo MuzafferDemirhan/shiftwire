@@ -9,8 +9,8 @@ export default function ConversationItem({ user }) {
   return (
     <button
       onClick={() => selectUser(user._id)}
-      className={`flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-gray-50 ${
-        isActive ? "bg-blue-50" : ""
+      className={`flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-gray-50 dark:hover:bg-gray-800 ${
+        isActive ? "bg-blue-50 dark:bg-blue-900/30" : ""
       }`}
     >
       <div className="relative shrink-0">
@@ -20,11 +20,11 @@ export default function ConversationItem({ user }) {
           className="h-10 w-10 rounded-full object-cover"
         />
         {isOnline && (
-          <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-green-500" />
+          <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-green-500 dark:border-gray-900" />
         )}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-gray-900">
+        <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
           {user.fullName}
         </p>
         <p className="truncate text-xs text-gray-500">

@@ -14,7 +14,7 @@ export default function ConversationList() {
     return (
       <div className="flex flex-col items-center gap-2 px-4 py-8 text-center">
         <img src={emptyInboxSvg} alt="No conversations" className="w-32" />
-        <p className="text-sm text-gray-500">No conversations yet.</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">No conversations yet.</p>
       </div>
     );
   }

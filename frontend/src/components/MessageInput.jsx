@@ -22,7 +22,7 @@ export default function MessageInput() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center gap-2 border-t border-gray-200 px-6 py-3"
+      className="flex items-center gap-2 border-t border-gray-200 px-6 py-3 dark:border-gray-700"
     >
       {file && (
         <span className="text-xs text-gray-500">
@@ -32,7 +32,7 @@ export default function MessageInput() {
       <button
         type="button"
         onClick={() => fileRef.current?.click()}
-        className="rounded p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+        className="rounded p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700"
       >
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
@@ -50,7 +50,7 @@ export default function MessageInput() {
         placeholder="Type a message..."
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
       />
       <button
         type="submit"

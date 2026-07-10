@@ -31,7 +31,7 @@ export default function ChatPage() {
   }, [user, setOnlineUsers, addMessage, fetchConversations]);
 
   return (
-    <div className="flex h-svh overflow-hidden bg-gray-100">
+    <div className="flex h-svh overflow-hidden bg-gray-100 dark:bg-gray-900">
       <Sidebar />
       <ChatPanel />
     </div>

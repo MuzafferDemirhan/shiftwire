@@ -43,10 +43,10 @@ export default function SearchUsers() {
           setShowResults(true);
         }}
         onFocus={() => setShowResults(true)}
-        className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
       />
       {showResults && query && (
-        <div className="absolute left-4 right-4 top-full z-10 mt-1 max-h-48 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg">
+        <div className="absolute left-4 right-4 top-full z-10 mt-1 max-h-48 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
           {filtered.length === 0 ? (
             <p className="p-3 text-sm text-gray-400">No users found.</p>
           ) : (
@@ -54,14 +54,14 @@ export default function SearchUsers() {
               <button
                 key={u._id}
                 onClick={() => handleSelect(u._id)}
-                className="flex w-full items-center gap-3 px-3 py-2 text-left hover:bg-gray-50"
+                className="flex w-full items-center gap-3 px-3 py-2 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
               >
                 <img
                   src={u.profilePic || avatarPlaceholder}
                   alt={u.fullName}
                   className="h-8 w-8 rounded-full object-cover"
                 />
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
                   {u.fullName}
                 </span>
               </button>
