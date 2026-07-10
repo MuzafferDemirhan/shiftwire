@@ -9,16 +9,22 @@ const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:5173";
 
 const io = new Server(server, { cors: { origin: [allowedOrigin] } });
 
+const userSocketMap = {};
+
 function getReceiverSocketId(userId) {
   return userSocketMap[userId];
 }
 
-const userSocketMap = {};
-
 io.on("connection", (socket) => {
   const userId = socket.handshake.query.userId;
 
-  if (userId) userSocketMap[userId] = socket.id;
+  if (!userId) {
+    socket.emit("connection_error", { message: "userId query parameter required" });
+    socket.disconnect();
+    return;
+  }
+
+  userSocketMap[userId] = socket.id;
 
   io.emit("getOnlineUsers", Object.keys(userSocketMap));
 

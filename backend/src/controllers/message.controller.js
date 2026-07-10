@@ -54,6 +54,8 @@ export async function getConversationsForSidebar(req, res) {
 
       { $replaceRoot: { newRoot: { $first: "$user" } } },
 
+      { $match: { _id: { $ne: null } } },
+
       { $project: { clerkId: 0 } },
     ]);
 
@@ -104,6 +106,10 @@ export async function sendMessages(req, res) {
       else imageUrl = url;
     }
 
+    if (!text && !imageUrl && !videoUrl) {
+      return res.status(400).json({ message: "Message must contain text or media" });
+    }
+
     const newMessage = new Message({
       senderId,
       receiverId,
@@ -117,10 +123,10 @@ export async function sendMessages(req, res) {
     const receiverSocketId = getReceiverSocketId(receiverId);
 
     if (receiverSocketId) {
-      io.to(receiverSocketId).emit("newMessage", newMessage);
+      io.to(receiverSocketId).emit("newMessage", newMessage.toObject());
     }
 
-    res.status(201).json(newMessage);
+    res.status(201).json(newMessage.toObject());
   } catch (error) {
     console.error("Error in sendMessages:", error.message);
     res.status(500).json({ message: "Internal server error" });

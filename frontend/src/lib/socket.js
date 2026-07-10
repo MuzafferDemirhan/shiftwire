@@ -4,6 +4,10 @@ let socket = null;
 
 export function connectSocket(userId) {
   if (socket?.connected) return socket;
+  if (socket) {
+    socket.removeAllListeners();
+    socket.disconnect();
+  }
   socket = io("", {
     query: { userId },
     transports: ["websocket", "polling"],

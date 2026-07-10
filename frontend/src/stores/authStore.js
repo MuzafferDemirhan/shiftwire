@@ -14,5 +14,15 @@ export const useAuthStore = create((set) => ({
     }
   },
 
+  retryFetchUser: async () => {
+    set({ loading: true });
+    try {
+      const { data } = await api.get("/api/auth/check");
+      set({ user: data, loading: false });
+    } catch {
+      set({ user: null, loading: false });
+    }
+  },
+
   clearUser: () => set({ user: null }),
 }));

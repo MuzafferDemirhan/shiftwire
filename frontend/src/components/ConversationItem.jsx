@@ -1,5 +1,5 @@
 import { useChatStore } from "../stores/chatStore.js";
-import avatarPlaceholder from "../assets/avatar-placeholder.svg";
+import Avatar from "./Avatar.jsx";
 
 export default function ConversationItem({ user }) {
   const { selectedUserId, selectUser, onlineUsers } = useChatStore();
@@ -14,8 +14,8 @@ export default function ConversationItem({ user }) {
       }`}
     >
       <div className="relative shrink-0">
-        <img
-          src={user.profilePic || avatarPlaceholder}
+        <Avatar
+          src={user.profilePic}
           alt={user.fullName}
           className="h-10 w-10 rounded-full object-cover"
         />
@@ -27,7 +27,7 @@ export default function ConversationItem({ user }) {
         <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
           {user.fullName}
         </p>
-        <p className="truncate text-xs text-gray-500">
+        <p className="truncate text-xs text-gray-500 dark:text-gray-400">
           {isOnline ? "Online" : "Offline"}
         </p>
       </div>

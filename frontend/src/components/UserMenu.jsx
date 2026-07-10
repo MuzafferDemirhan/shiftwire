@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useClerk } from "@clerk/react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../stores/authStore.js";
-import avatarPlaceholder from "../assets/avatar-placeholder.svg";
+import Avatar from "./Avatar.jsx";
 
 export default function UserMenu() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -27,8 +27,8 @@ export default function UserMenu() {
         onClick={() => setShowDropdown(!showDropdown)}
         className="flex w-full items-center gap-3"
       >
-        <img
-          src={user?.profilePic || avatarPlaceholder}
+        <Avatar
+          src={user?.profilePic}
           alt={user?.fullName}
           className="h-10 w-10 rounded-full object-cover"
         />

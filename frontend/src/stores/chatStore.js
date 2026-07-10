@@ -35,6 +35,7 @@ export const useChatStore = create((set, get) => ({
     } catch {
       set({ loading: false });
     }
+    get().fetchConversations();
   },
 
   sendMessage: async (receiverId, text, file) => {

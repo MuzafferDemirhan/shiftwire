@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useChatStore } from "../stores/chatStore.js";
-import avatarPlaceholder from "../assets/avatar-placeholder.svg";
+import Avatar from "./Avatar.jsx";
 
 export default function SearchUsers() {
   const [query, setQuery] = useState("");
@@ -56,8 +56,8 @@ export default function SearchUsers() {
                 onClick={() => handleSelect(u._id)}
                 className="flex w-full items-center gap-3 px-3 py-2 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
               >
-                <img
-                  src={u.profilePic || avatarPlaceholder}
+                <Avatar
+                  src={u.profilePic}
                   alt={u.fullName}
                   className="h-8 w-8 rounded-full object-cover"
                 />

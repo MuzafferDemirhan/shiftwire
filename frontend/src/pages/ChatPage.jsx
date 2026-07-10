@@ -8,11 +8,12 @@ import ChatPanel from "../components/ChatPanel.jsx";
 export default function ChatPage() {
   const { user } = useAuthStore();
   const { setOnlineUsers, addMessage, fetchConversations } = useChatStore();
+  const userId = user?._id;
 
   useEffect(() => {
-    if (!user) return;
+    if (!userId) return;
 
-    const socket = connectSocket(user._id);
+    const socket = connectSocket(userId);
 
     socket.on("getOnlineUsers", (userIds) => {
       setOnlineUsers(userIds);
@@ -28,7 +29,7 @@ export default function ChatPage() {
       socket.off("newMessage");
       disconnectSocket();
     };
-  }, [user, setOnlineUsers, addMessage, fetchConversations]);
+  }, [userId, setOnlineUsers, addMessage, fetchConversations]);
 
   return (
     <div className="flex h-svh overflow-hidden bg-gray-100 dark:bg-gray-900">

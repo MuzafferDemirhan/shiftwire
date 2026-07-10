@@ -27,7 +27,15 @@ export default function SettingsPage() {
     fetchSettings();
   }, [fetchSettings]);
 
-  const SectionComponent = sections[activeTab].component;
+  const SectionComponent = sections[activeTab]?.component;
+
+  if (!SectionComponent) {
+    return (
+      <div className="flex min-h-svh items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <p className="text-gray-500 dark:text-gray-400">Select a section from the sidebar.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-svh bg-gray-50 dark:bg-gray-900">

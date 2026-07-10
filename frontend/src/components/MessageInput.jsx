@@ -25,7 +25,7 @@ export default function MessageInput() {
       className="flex items-center gap-2 border-t border-gray-200 px-6 py-3 dark:border-gray-700"
     >
       {file && (
-        <span className="text-xs text-gray-500">
+        <span className="text-xs text-gray-500 dark:text-gray-400">
           {file.name.length > 20 ? file.name.slice(0, 20) + "..." : file.name}
         </span>
       )}

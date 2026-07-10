@@ -27,11 +27,20 @@ export async function getSettings(req, res) {
   }
 }
 
+const allowedFields = [
+  "theme", "fontSize", "bubbleStyle",
+  "notifications", "privacy", "media", "language",
+];
+
 export async function updateSettings(req, res) {
   try {
+    const updates = {};
+    for (const key of allowedFields) {
+      if (req.body[key] !== undefined) updates[key] = req.body[key];
+    }
     const settings = await Settings.findOneAndUpdate(
       { userId: req.user._id },
-      { $set: { ...req.body } },
+      { $set: updates },
       { new: true, upsert: true, runValidators: true },
     );
     res.status(200).json(settings);
