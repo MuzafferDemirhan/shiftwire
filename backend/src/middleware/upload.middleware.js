@@ -18,5 +18,3 @@ export const upload = multer({
     cb(null, true);
   },
 });
-
-export { upload };
