@@ -1,21 +1,30 @@
-import './App.css'
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react';
+import { useEffect } from "react";
+import { useAuth } from "@clerk/react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { setGetToken } from "./lib/axios.js";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import ChatPage from "./pages/ChatPage.jsx";
 
 function App() {
-  return (
-    <div>
-      <h1>MY APP</h1>
+  const { getToken } = useAuth();
 
-      <header>
-        <Show when="signed-out">
-          <SignInButton mode="modal" />
-          <SignUpButton mode="modal" />
-        </Show>
-        <Show when="signed-in">
-          <UserButton />
-        </Show>
-      </header>
-    </div>
+  useEffect(() => {
+    setGetToken(() => getToken());
+  }, [getToken]);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <ChatPage />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
